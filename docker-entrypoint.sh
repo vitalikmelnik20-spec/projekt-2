@@ -1,11 +1,11 @@
 #!/bin/bash
 set -e
 
-# Fix Apache MPM conflict at runtime (runs every start, not affected by Docker cache)
-rm -f /etc/apache2/mods-enabled/mpm_event.conf \
-      /etc/apache2/mods-enabled/mpm_event.load \
-      /etc/apache2/mods-enabled/mpm_worker.conf \
-      /etc/apache2/mods-enabled/mpm_worker.load
+# Ensure only mpm_prefork is loaded (mod_php requires it; event/worker conflict with it).
+# Use find -delete to catch any naming variation, then force-symlink prefork.
+find /etc/apache2/mods-enabled/ -name 'mpm_*' -delete 2>/dev/null || true
+ln -sf /etc/apache2/mods-available/mpm_prefork.load /etc/apache2/mods-enabled/mpm_prefork.load
+ln -sf /etc/apache2/mods-available/mpm_prefork.conf /etc/apache2/mods-enabled/mpm_prefork.conf
 
 PORT=${PORT:-80}
 SQLITE_PATH=${SQLITE_PATH:-/data/game.db}
