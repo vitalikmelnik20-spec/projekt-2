@@ -58,6 +58,43 @@ if (!function_exists('mysql_connect')) {
         return true; // SQLite: database is the file
     }
 
+    function _rewrite_insert_set($query) {
+        // Convert MySQL-only "INSERT INTO `t` SET col=val, ..." to standard SQL.
+        if (!preg_match('/^(INSERT\s+(?:IGNORE\s+)?INTO\s+`?\w+`?)\s+SET\s+/is', $query, $m)) {
+            return $query;
+        }
+        $head = $m[1];
+        $rest = substr($query, strlen($m[0]));
+
+        $cols = []; $vals = []; $buf = '';
+        $in_q = false; $qc = '';
+        for ($i = 0, $len = strlen($rest); $i < $len; $i++) {
+            $ch = $rest[$i];
+            if ($in_q) {
+                $buf .= $ch;
+                if ($ch === $qc) $in_q = false;
+            } elseif ($ch === "'" || $ch === '"') {
+                $in_q = true; $qc = $ch; $buf .= $ch;
+            } elseif ($ch === ',') {
+                $pair = trim($buf);
+                if ($pair !== '' && ($eq = strpos($pair, '=')) !== false) {
+                    $cols[] = trim(substr($pair, 0, $eq));
+                    $vals[] = trim(substr($pair, $eq + 1));
+                }
+                $buf = '';
+            } else {
+                $buf .= $ch;
+            }
+        }
+        $pair = trim($buf);
+        if ($pair !== '' && ($eq = strpos($pair, '=')) !== false) {
+            $cols[] = trim(substr($pair, 0, $eq));
+            $vals[] = trim(substr($pair, $eq + 1));
+        }
+        if (empty($cols)) return $query;
+        return $head . ' (' . implode(', ', $cols) . ') VALUES (' . implode(', ', $vals) . ')';
+    }
+
     function mysql_query($query, $link = null) {
         $db = _sqlite_open();
         if (!$db) return false;
@@ -67,6 +104,11 @@ if (!function_exists('mysql_connect')) {
         // Silently ignore all MySQL SET statements (session vars, NAMES, @vars, etc.)
         if (preg_match('/^SET\s+/i', $query)) {
             return true;
+        }
+
+        // Convert MySQL INSERT ... SET syntax to standard INSERT ... VALUES
+        if (preg_match('/^INSERT\s+(?:IGNORE\s+)?INTO\s+/i', $query)) {
+            $query = _rewrite_insert_set($query);
         }
 
         try {
