@@ -64,8 +64,8 @@ if (!function_exists('mysql_connect')) {
 
         $query = trim($query);
 
-        // Silently ignore MySQL-specific statements
-        if (preg_match('/^SET\s+(NAMES|CHARACTER|sql_mode|AUTOCOMMIT)/i', $query)) {
+        // Silently ignore all MySQL SET statements (session vars, NAMES, @vars, etc.)
+        if (preg_match('/^SET\s+/i', $query)) {
             return true;
         }
 
