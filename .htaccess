@@ -1,0 +1,381 @@
+php_value date.timezone Europe/Moscow 
+php_value register_globals 0
+php_value error_reporting 2047
+php_value magic_quotes_gpc 0
+php_value magic_quotes_runtime 0
+php_value magic_quotes_sybase 0
+php_value allow_url_fopen 0
+php_value session.use_trans_sid "1" 
+php_value session.gc_maxlifetime 7200 
+php_value session.cookie_lifetime 7200
+php_value output_buffering On 
+php_value output_buffering 4096
+php_flag display_errors off
+php_flag register_globals off
+php_flag display_startup_errors off
+php_flag magic_quotes_gpc off
+php_flag session.use_only_cookies on
+php_value default_charset UTF-8
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^gifts_2/?$ gifts_2.php [L,QSA]
+	RewriteRule ^gifts_2/id/([0-9]*)/?$ gifts_2.php?id=$1 [L,QSA]
+RewriteRule ^turnirs/?$ turnirs.php [L,QSA]
+RewriteRule ^turnir/?$ turnir.php [L,QSA]
+RewriteRule ^smith/SendRunes/?$ smith.php?action=SendRunes [L,QSA]
+######
+RewriteRule ^lab/merchant/?$ lab.php?action=merchant [L,QSA]
+   RewriteRule ^lab/merchant/stone?$ lab.php?action=merchant&startMaking=stone [L,QSA]
+   RewriteRule ^lab/merchant/grass?$ lab.php?action=merchant&startMaking=grass [L,QSA]
+####
+RewriteRule ^sunduk/?$ module_sunduk/index.php [L,QSA]
+RewriteRule ^sunduk/go?$ module_sunduk/index.php?act=go [L,QSA]
+RewriteRule ^menu/?$ menu.php [L,QSA]
+RewriteRule ^rud/?$ rud.php [L,QSA]
+RewriteRule ^rud/go/?$ rud.php?go [L,QSA]
+RewriteRule ^rud/lvl/?$ rud.php?lvl [L,QSA]
+RewriteRule ^ticket/?$ ticket.php [L,QSA]
+RewriteRule ^league/?$ league.php [L,QSA]
+RewriteRule ^game/?$ game.php [L,QSA]
+RewriteRule ^drakon/?$ drakon.php [L,QSA]
+    RewriteRule ^save/?$ save.php [L,QSA]
+RewriteRule ^SendRune/?$ module_send_rune/index.php [L,QSA]
+    RewriteRule ^ban/?$ ban.php [L,QSA]
+# parse
+RewriteRule ^red/top/([0-9]*)/?$ redaktor.php?top=$1 [L,QSA]
+   RewriteRule ^parse/([0-9]*)/?$ parse.php?id=$1 [L,QSA]
+RewriteRule ^fights/?$ fights.php [L,QSA]
+RewriteRule ^fish/?$ fish.php [L,QSA]
+RewriteRule ^rinok/?$ rinok.php [L,QSA]
+RewriteRule ^zags/?$ zags.php [L,QSA]
+RewriteRule ^luck/?$ game.php [L,QSA]
+RewriteRule ^exit/?$ exit.php [L,QSA]
+RewriteRule ^epicwar/?$ epicwar.php [L,QSA]
+RewriteRule ^trade/?$ trade.php [L,QSA]
+RewriteRule ^trade/exchange/?$ exchange.php [L,QSA]
+RewriteRule ^trade/exchange/gold/1/?$ exchange.php?action=exchange&exc=silver&count=1 [L,QSA]
+RewriteRule ^trade/exchange/gold/10/?$ exchange.php?action=exchange&exc=silver&count=10 [L,QSA]
+RewriteRule ^trade/exchange/gold/100/?$ exchange.php?action=exchange&exc=silver&count=100 [L,QSA]
+
+RewriteRule ^trade/exchange/silver/1/?$ exchange.php?action=exchange&exc=gold&count=1 [L,QSA]
+RewriteRule ^trade/exchange/silver/5/?$ exchange.php?action=exchange&exc=gold&count=5 [L,QSA]
+RewriteRule ^trade/exchange/silver/10/?$ exchange.php?action=exchange&exc=gold&count=10 [L,QSA]
+
+
+
+RewriteRule ^trade/exchange/([0-9]*)/?$ trade.php?action=exchange&g=$1 [L,QSA]
+
+    RewriteRule ^trade/webmoney/?$ trade.php?action=webmoney [L,QSA]
+
+    RewriteRule ^trade/sms/?$ trade.php?action=sms [L,QSA]
+
+RewriteRule ^belt/?$ belt.php [L,QSA]
+RewriteRule ^settings/?$ settings.php [L,QSA]
+RewriteRule ^settings/email/?$ setemail.php [L,QSA]
+RewriteRule ^settings/name/?$ setname.php [L,QSA]
+RewriteRule ^settings/pass/?$ setpass.php?pass [L,QSA]
+RewriteRule ^settings/race/?$ setrace.php [L,QSA]
+RewriteRule ^settings/sex/?$ setsex.php [L,QSA]
+RewriteRule ^settings/([0-9]*)/quit/?$ settings.php?action=quit [L,QSA]
+RewriteRule ^setting/login/?$ setting.php?action=login [L,QSA]
+RewriteRule ^setting/password/?$ setting.php?action=password [L,QSA]
+RewriteRule ^setting/race/?$ setting.php?action=race [L,QSA]
+RewriteRule ^setting/sex/?$ setting.php?action=sex [L,QSA]
+RewriteRule ^settings/mail/?$ settings.php?action=mail [L,QSA]
+RewriteRule ^revolt/?$ revolt.php [L,QSA]
+RewriteRule ^avatar/?$ avatar.php [L,QSA]
+ RewriteRule ^cw/?$ cw.php [L,QSA]
+RewriteRule ^settings/?$ settings.php [L,QSA]
+RewriteRule ^settings/login/?$ settings.php?action=login [L,QSA]
+RewriteRule ^settings/password/?$ settings.php?action=password [L,QSA]
+RewriteRule ^settings/race/?$ settings.php?action=race [L,QSA]
+RewriteRule ^settings/sex/?$ settings.php?action=sex [L,QSA]
+##exchanger
+RewriteRule ^exchanger/?$ exchanger.php [L,QSA]
+RewriteRule ^exchanger/goldtosilver/?$ exchanger.php?page=goldtosilver [L,QSA]
+RewriteRule ^exchanger/silvertogold/?$ exchanger.php?page=silvertogold [L,QSA]
+RewriteRule ^exchanger/goldtometal/?$ exchanger.php?page=goldtometal [L,QSA]
+RewriteRule ^exchanger/donate/?$ exchanger.php?page=donate [L,QSA]
+RewriteRule ^exchanger/result/?$ exchanger.php?page=result [L,QSA]
+RewriteRule ^exchanger/error/?$ exchanger.php?page=error [L,QSA]
+RewriteRule ^exchanger/ok/?$ exchanger.php?page=ok [L,QSA]
+# Форум
+RewriteRule ^forum/?$ forum.php [L,QSA]
+RewriteRule ^forum/topic/red/([0-9]*)?$ red.php?id=$1 [L,QSA]
+RewriteRule ^forum/sub/([0-9]*)/?$ forum.php?sub=$1 [L,QSA]
+RewriteRule ^forum/topic/([0-9]*)/?$ forum.php?topic=$1 [L,QSA]
+RewriteRule ^cforum/?$ cforum.php [L,QSA]
+RewriteRule ^cforum/sub/([0-9]*)/?$ cforum.php?sub=$1 [L,QSA]
+RewriteRule ^cforum/topic/([0-9]*)/?$ cforum.php?topic=$1 [L,QSA]
+# Поход
+RewriteRule ^campaign/?$ campaign.php [L,QSA]
+RewriteRule ^campaign/sent/?$ campaign.php?action=sent [L,QSA]
+RewriteRule ^campaign/lose/end/?$ campaign.php?action=lose&end [L,QSA]
+RewriteRule ^campaign/go/?$ campaign.php?go [L,QSA]
+RewriteRule ^campaign/find/?$ campaign.php?action=find [L,QSA]
+RewriteRule ^campaign/lose/?$ campaign.php?action=lose [L,QSA]
+RewriteRule ^campaign/find/fight/?$ campaign.php?action=find&fight [L,QSA]
+RewriteRule ^campaign/fight/exit/?$ campaign.php?action=exit [L,QSA]
+RewriteRule ^campaign/exit/exit/?$ campaign.php?action=exit&exit [L,QSA]
+RewriteRule ^campaign/fight/?$ campaign.php?action=fight [L,QSA]
+RewriteRule ^campaign/fight/attack/?$ campaign.php?action=fight&attack [L,QSA]
+RewriteRule ^campaign/fight/stone/?$ campaign.php?action=fight&stone [L,QSA]
+RewriteRule ^campaign/fight/grass/?$ campaign.php?action=fight&grass [L,QSA]
+RewriteRule ^campaign/fight/win/?$ campaign.php?action=fight&win [L,QSA]
+RewriteRule ^campaign/fight/lose/?$ campaign.php?action=fight&lose [L,QSA]
+RewriteRule ^campaign/sent/stone/?$ campaign.php?action=sent&stone [L,QSA]
+RewriteRule ^campaign/sent/grass/?$ campaign.php?action=sent&grass [L,QSA]
+# ОНЛАЙН
+RewriteRule ^online/?$ online.php [L,QSA]
+RewriteRule ^online/search/?$ online.php?action=search [L,QSA]
+# Чёрный список #
+RewriteRule ^mail/blacklist/?$ blacklist.php [L,QSA]
+# Заявки в клан #
+RewriteRule ^clan/application/?$ clanzayavs.php [L,QSA]
+# Бонус клан.опыта #
+RewriteRule ^clan/expbonus/?$ v_clan.php [L,QSA]
+# Распустить клан #
+RewriteRule ^clan/deleteclan/?$ clan.php?action=deleteclan [L,QSA]
+# О клане #
+RewriteRule ^clan/info/?$ clan.php?action=info [L,QSA]
+# Список друзей #
+RewriteRule ^mail/friends/?$ friends.php [L,QSA]
+# Настройки почты #
+RewriteRule ^mail/settings/?$ settingmail.php [L,QSA]
+# Список друзей #
+# кЛАН ЖУРНАЛ #
+RewriteRule ^clan/journal/?$ clan_journal.php? [L,QSA]
+RewriteRule ^clan/gerb/?$ clan.php?action=gerb [L,QSA]
+# ФОРУМ
+RewriteRule ^forum/?$ forum.php [L,QSA]
+RewriteRule ^forum/sub/([0-9]*)/?$ forum.php?sub=$1 [L,QSA]
+RewriteRule ^forum/topic/([0-9]*)/?$ forum.php?topic=$1 [L,QSA]
+# Сражения 
+ RewriteRule ^mor/?$ mor.php [L,QSA]
+ RewriteRule ^aid/?$ aid.php [L,QSA]
+# чат
+    RewriteRule ^clanchat/clan/?$ clanchat.php?clan=true [L,QSA]
+# чат
+    RewriteRule ^chat/?$ chat.php [L,QSA]
+    RewriteRule ^chat/clan/?$ chat.php?clan=true [L,QSA]
+
+    RewriteRule ^cave/?$ cave.php [L,QSA]
+
+#ПИтомцы  RewriteRule ^podarok/?$ podarok.php [L,QSA]
+RewriteRule ^petshop/?$ petshop.php [L,QSA]
+RewriteRule ^petshop/vugn/([0-9]*)/?$ petshop.php?vugn&pet_id=$1 [L,QSA]
+RewriteRule ^petshop/up/([0-9]*)/?$ petshop.php?up&pet_id=$1 [L,QSA]
+RewriteRule ^petshop/up/([0-9]*)/buy/?$ petshop.php?up&pet_id=$1&buy [L,QSA]
+RewriteRule ^petshop/([0-9]*)/?$ petshop.php?pet_id=$1 [L,QSA]
+RewriteRule ^petshop/up/([0-9]*)/str/?$ petshop.php?up&pet_id=$1&str [L,QSA]
+RewriteRule ^petshop/up/([0-9]*)/vit/?$ petshop.php?up&pet_id=$1&vit [L,QSA]
+RewriteRule ^petshop/up/([0-9]*)/agi/?$ petshop.php?up&pet_id=$1&agi [L,QSA]
+RewriteRule ^petshop/up/([0-9]*)/def/?$ petshop.php?up&pet_id=$1&def [L,QSA]
+RewriteRule ^petshop/up/([0-9]*)/mana/?$ petshop.php?up&pet_id=$1&mana [L,QSA]
+RewriteRule ^pet/([0-9]*)/?$ pet.php?pet_id=$1 [L,QSA]
+RewriteRule ^pets_sxvatki/?$ pets_sxvatki.php [L,QSA]
+
+# МОДЕРАТОРЫ
+RewriteRule ^moderators/?$ moderators.php [L,QSA]
+# ПОЛЬЗОВАТЕЛЬ
+RewriteRule ^user/?$ user.php [L,QSA]
+RewriteRule ^user/([0-9]*)/?$ user.php?id=$1 [L,QSA]
+# СНАРЯЖЕНИЕ
+RewriteRule ^equip/([0-9]*)/?$ equip.php?id=$1 [L,QSA]
+# УМЕНИЯ
+RewriteRule ^ability/([0-9]*)/?$ ability.php?id=$1 [L,QSA]
+RewriteRule ^ability/([0-9]*)/([0-9]*)/?$ ability.php?id=$1&ability=$2 [L,QSA]
+
+
+                   RewriteRule ^inv/bag/?$            inv.php?place=0 [L,QSA]
+                 RewriteRule ^inv/chest/?$            inv.php?place=1 [L,QSA]
+         RewriteRule ^inv/wear/([0-9]*)/?$            inv.php?wear=$1 [L,QSA]
+RewriteRule ^inv/move/([0-9]*)/([0-9]*)/?$ inv.php?place=$1&unwear=$2 [L,QSA]
+
+# РЕСУРСЫ
+RewriteRule ^sack/?$ sack.php [L,QSA]
+# ВЕЩИ  
+RewriteRule ^item/([0-9]*)/?$ item.php?id=$1 [L,QSA]
+# ПОЧТА
+RewriteRule ^mail/?$ mail.php [L,QSA]
+RewriteRule ^mail/([0-9]*)/?$ mail.php?act=dialog&id=$1 [L,QSA]
+# ТРЕНЕРОВКА
+RewriteRule ^train/?$ train.php [L,QSA]
+
+# подарок
+RewriteRule ^podarok/?$ podarok.php [L,QSA]
+                                      RewriteRule ^clan/?$ clan.php [L,QSA]
+                       RewriteRule ^clan/([0-9]*)/?$ clan.php?id=$1 [L,QSA]
+    RewriteRule ^clan/memb/([0-9]*)/?$ clan.php?action=memb&memb=$1 [L,QSA]
+    RewriteRule ^clan/money/?$ clan.php?action=money [L,QSA]
+
+    RewriteRule ^clan/built/?$ clan.php?action=built [L,QSA]
+
+
+# КЛАНЫ
+RewriteRule ^clans/?$ clans.php [L,QSA]
+RewriteRule ^clans/create/?$ clans.php?action=create [L,QSA]
+RewriteRule ^clans/search/?$ clans.php?action=search [L,QSA]
+# АРЕНА
+RewriteRule ^arena/?$ arena.php [L,QSA]
+# ДУЭЛИ
+RewriteRule ^duel/?$ duel.php [L,QSA]
+# КОЛИЗЕЙ
+RewriteRule ^coliseum/?$ coliseum.php [L,QSA]
+#Хижина мудреца
+RewriteRule ^sage/?$ sage.php [L,QSA]
+#Трофеии
+RewriteRule ^medal/?$ medal.php [L,QSA]
+#Задания
+RewriteRule ^quest/?$ quest.php [L,QSA]
+
+
+
+
+    RewriteRule ^trade/?$ trade.php [L,QSA]
+    
+    RewriteRule ^trade/exchange/?$ trade.php?action=exchange [L,QSA]
+    RewriteRule ^trade/exchange/([0-9]*)/?$ trade.php?action=exchange&g=$1 [L,QSA]
+
+    RewriteRule ^trade/webmoney/?$ trade.php?action=webmoney [L,QSA]
+
+    RewriteRule ^trade/sms/?$ trade.php?action=sms [L,QSA]
+
+
+
+    RewriteRule ^shop/?$ shop.php [L,QSA]
+    
+    RewriteRule ^shop/([0-9]*)/?$ shop.php?quality=$1 [L,QSA]
+    RewriteRule ^complect/([0-9]*)/?$ complect.php?id=$1 [L,QSA]
+    RewriteRule ^itemshop/([0-9]*)/?$ itemshop.php?id=$1 [L,QSA]
+
+
+    RewriteRule ^farm/?$ farm.php [L,QSA]
+# ЗАЛ СЛАВЫ
+RewriteRule ^rating/?$ rating.php [L,QSA]
+RewriteRule ^rating/coliseum/?$ rating.php?sort=coliseum [L,QSA]
+RewriteRule ^rating/duel/?$ rating.php?sort=duel [L,QSA]
+# МАНЕКЕН
+RewriteRule ^manekenImage/([0-9]*)/([0-9]*)/([0-9]*)/([0-9]*)/([0-9]*)/([0-9]*)/([0-9]*)/([0-9]*)/([0-9]*)/([0-9]*)/?$ manekenImage.php?g=$1&w_1=$2&w_2=$3&w_3=$4&w_4=$5&w_5=$6&w_6=$7&w_7=$8&w_8=$9&t=$10 [L,QSA]
+
+    RewriteRule ^smith/?$ smith.php [L,QSA]
+    RewriteRule ^smith/runes/?$ smith.php?action=runes [L,QSA]
+    RewriteRule ^smith/runes/([0-9]*)/?$ smith.php?action=runes&id=$1 [L,QSA]
+    RewriteRule ^smith/runes/([0-9]*)/([0-9]*)/?$ smith.php?action=runes&id=$1&rune=$2 [L,QSA]
+    
+    RewriteRule ^smith/bonus/?$ smith.php?action=bonus [L,QSA]
+    RewriteRule ^smith/bonus/([0-9]*)/?$ smith.php?action=bonus&id=$1 [L,QSA]
+
+    RewriteRule ^smith/smith/?$ smith.php?action=smith [L,QSA]
+    RewriteRule ^smith/smith/([0-9]*)/?$ smith.php?action=smith&id=$1 [L,QSA]
+
+# ДОЛИНА БЕССМЕРТНЫХ
+RewriteRule ^undying/?$ undying.php [L,QSA]
+# СРАЖЕНИЯ
+RewriteRule ^fights/?$ fights.php [L,QSA]
+# РЕФЕРАЛЬНАЯ СИСТЕМА
+RewriteRule ^([0-9]*)/?$ index.php?ref=$1 [L,QSA]
+# Король БЕССМЕРТНЫХ
+RewriteRule ^king/?$ king.php [L,QSA]
+# БЫСТРАЫЙ СТАРТ
+RewriteRule ^start/?$ start.php [L,QSA]
+RewriteRule ^start/([0-9]*)/?$ start.php?ref=$1 [L,QSA]
+
+
+    RewriteRule ^common/?$ common.php [L,QSA]
+    RewriteRule ^common/pravila-2/?$ common.php?action=pravila-2 [L,QSA]
+    RewriteRule ^common/pravila/?$ common.php?action=pravila [L,QSA]
+    RewriteRule ^common/refferal/?$ common.php?action=refferal [L,QSA]
+    RewriteRule ^common/contacts/?$ common.php?action=contacts [L,QSA]
+    RewriteRule ^lab/?$ lab.php [L,QSA]
+    RewriteRule ^lab/wiz/?$ lab.php?action=wiz [L,QSA]
+
+    RewriteRule ^adm/?$ adm.php [L,QSA]
+    RewriteRule ^adm/ban/?$ adm.php?action=ban [L,QSA]
+    RewriteRule ^adm/ban/list/?$ adm.php?action=ban&list=true [L,QSA]
+    
+    RewriteRule ^adm/clon/?$ adm.php?action=clon [L,QSA]
+    RewriteRule ^adm/deposit/?$ adm.php?action=deposit [L,QSA]
+    RewriteRule ^adm/trade/?$ adm.php?action=trade [L,QSA]
+	RewriteRule ^adm/acc/?$ adm.php?action=acc [L,QSA]
+	RewriteRule ^adm/acc/yes/([0-9]*)/?$ adm.php?action=acc&yes=$1 [L,QSA]
+
+
+    RewriteRule ^lab/premium/?$ lab.php?action=premium [L,QSA]
+   RewriteRule ^smiles/?$ smiles.php [L,QSA]
+
+
+   
+   DirectoryIndex index.php 
+Options -Indexes 
+Options +FollowSymLinks
+<IfModule mod_gzip.c>
+mod_gzip_on         Yes
+mod_gzip_dechunk    Yes
+mod_gzip_item_include file          \.(html?|txt|css|php)$
+mod_gzip_item_include handler       ^cgi-script$
+mod_gzip_item_include mime      ^text\.*
+mod_gzip_item_include mime      ^application/x-javascript.*
+mod_gzip_item_exclude mime      ^image\.*
+mod_gzip_item_exclude rspheader ^Content-Encoding:.*gzip.*
+</IfModule>
+
+ErrorDocument 401 /error401.php
+ErrorDocument 403 /error403.php
+ErrorDocument 404 /error404.php
+ErrorDocument 500 /error500.php
+Order Deny,Allow
+<Files ~ ".htaccess$">
+Order allow,deny
+Deny from All
+Satisfy All
+</Files>
+RewriteCond %{QUERY_STRING} (\<|%3C).*script.*(\>|%3E) [NC,OR]
+RewriteCond %{QUERY_STRING} GLOBALS(=|\[|\%[0-9A-Z]{0,2}) [OR]
+RewriteCond %{QUERY_STRING} _REQUEST(=|\[|\%[0-9A-Z]{0,2})
+RewriteRule ^(.*)$ index.php [F,L]
+<FilesMatch ".(gif|jpg|jpeg|png|ico|js|css|php)$">
+Header set Cache-Control "max-age=86900"
+</FilesMatch>
+# Блокируем любой скрипт, который пытается установить sbp or sb_authorname чере URL (баг simpleboard)#
+
+RewriteCond %{QUERY_STRING} sbp(=|%20|%3D) [OR]
+
+RewriteCond %{QUERY_STRING} sb_authorname(=|%20|%3D)
+
+#Далее список юзерагентов которым мы запрещаем доступ
+SetEnvIfNoCase User-Agent JS-Kit bad_bot
+SetEnvIfNoCase User-Agent PostRank bad_bot
+SetEnvIfNoCase User-Agent Python-urllib bad_bot
+SetEnvIfNoCase User-Agent UnwindFetchor bad_bot
+SetEnvIfNoCase User-Agent facebookexternalhit bad_bot
+SetEnvIfNoCase User-Agent TweetmemeBot bad_bot
+SetEnvIfNoCase User-Agent Butterfly bad_bot
+SetEnvIfNoCase User-Agent MFE_expand bad_bot
+SetEnvIfNoCase User-Agent Java bad_bot
+SetEnvIfNoCase User-Agent Summify bad_bot
+SetEnvIfNoCase User-Agent MetaURI bad_bot
+SetEnvIfNoCase User-Agent FlipboardProxy bad_bot
+SetEnvIfNoCase User-Agent ScribdReader bad_bot
+SetEnvIfNoCase User-Agent RockMelt bad_bot
+SetEnvIfNoCase User-Agent InAGist bad_bot
+SetEnvIfNoCase User-Agent NING bad_bot
+SetEnvIfNoCase User-Agent TweetedTimes bad_bot
+SetEnvIfNoCase User-Agent PaperLiBot bad_bot
+SetEnvIfNoCase User-Agent Library bad_bot
+SetEnvIfNoCase User-Agent Ezooms bad_bot
+SetEnvIfNoCase User-Agent strawberryj bad_bot
+SetEnvIfNoCase User-Agent Scooper bad_bot
+SetEnvIfNoCase User-Agent Ahrefs bad_bot
+SetEnvIfNoCase User-Agent Spider bad_bot
+SetEnvIfNoCase User-Agent None bad_bot
+SetEnvIfNoCase User-Agent EventMachine bad_bot
+SetEnvIfNoCase User-Agent aiHitBot bad_bot
+SetEnvIfNoCase User-Agent SolomonoBot bad_bot
+SetEnvIfNoCase User-Agent SearchBot bad_bot
+SetEnvIfNoCase User-Agent Wget bad_bot
+SetEnvIfNoCase User-Agent Crawler bad_bot
+Order Allow,Deny
+Allow from all
+Deny from env=bad_bot
