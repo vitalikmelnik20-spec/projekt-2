@@ -16,6 +16,8 @@ sed -i "s/<VirtualHost \*:80>/<VirtualHost *:$PORT>/" /etc/apache2/sites-availab
 
 # Initialize SQLite database on first run
 mkdir -p "$(dirname "$SQLITE_PATH")"
+chown www-data:www-data "$(dirname "$SQLITE_PATH")"
+chmod 775 "$(dirname "$SQLITE_PATH")"
 
 if [ ! -f "$SQLITE_PATH" ]; then
     echo "First run: converting MySQL dump to SQLite..."
@@ -24,5 +26,8 @@ if [ ! -f "$SQLITE_PATH" ]; then
     rm -f /tmp/game_init.sql
     echo "Database ready at $SQLITE_PATH"
 fi
+
+chown www-data:www-data "$SQLITE_PATH"
+chmod 664 "$SQLITE_PATH"
 
 exec "$@"
