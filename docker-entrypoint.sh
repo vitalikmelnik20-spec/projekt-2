@@ -15,7 +15,7 @@ sed -i "s/Listen 80/Listen $PORT/" /etc/apache2/ports.conf
 sed -i "s/<VirtualHost \*:80>/<VirtualHost *:$PORT>/" /etc/apache2/sites-available/000-default.conf
 
 # Initialize SQLite database on first run
-SCHEMA_VERSION="2"
+SCHEMA_VERSION="3"
 SCHEMA_MARKER="${SQLITE_PATH}.v${SCHEMA_VERSION}"
 
 mkdir -p "$(dirname "$SQLITE_PATH")"
