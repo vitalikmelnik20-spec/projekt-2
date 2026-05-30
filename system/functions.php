@@ -19,12 +19,11 @@ $mc = @mysql_connect($db_host, $db_user, $db_password) or die('Невозмож�
 @mysql_query("SET NAMES 'utf8'", $mc);
 @mysql_select_db($db_name, $mc) or die('Указаная таблица не найдена');
 try {
-$db = new PDO("mysql:host=$db_host;port=$db_port;dbname=$db_name;charset=utf8", $db_user, $db_password);
-$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
-$db->exec("set names utf8"); 
-} 
-catch(PDOException $e) { 
-echo 'Подключение с сервером потеряно: ' . $e->getMessage(); 
+$db = new PDO('sqlite:' . ($GLOBALS['__sqlite_path'] ?? '/data/game.db'));
+$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+}
+catch(PDOException $e) {
+echo 'Database connection error: ' . $e->getMessage();
 }
 
 
