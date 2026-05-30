@@ -94,6 +94,13 @@ def convert_col_line(raw):
     sql_t = sqlite_type(mysql_t)
     constraints = clean_constraints(after)
 
+    # Mimic MySQL non-strict mode: NOT NULL without DEFAULT → add SQLite default
+    if re.search(r'\bNOT NULL\b', constraints, re.I) and not re.search(r'\bDEFAULT\b', constraints, re.I):
+        if sql_t in ('INTEGER', 'REAL'):
+            constraints += ' DEFAULT 0'
+        else:
+            constraints += " DEFAULT ''"
+
     result = f'`{col_name}` {sql_t}'
     if constraints:
         result += f' {constraints}'
